@@ -3,10 +3,10 @@
 		<div class="inner">
 			<header class="modal-hd">{{title}}</header>
   			<section class="modal-bd" v-if="!modal_input">
-            {{content}}
+                {{content}}
         	</section>
     		<section class="modal-bd" v-if="modal_input">
-           		 <input type="text" class="input" v-model="inputMsg" placeholder="请输入剩余课时提醒" />
+           		 <input type="text" class="input" v-model="inputMsg"/>
         	</section>
         	<footer class="modal-footer">
         		<ui-button :class="type === 'confirm'?'comright':''" @click.native="ok" type="text">{{okText}}</ui-button>
@@ -34,10 +34,10 @@ import uiButton from '../base/button'
 				type:String
 			},
 			modal_input: {
-			   default: false
+                default: false
 			},
 			okText:{
- 				type: String,
+                type: String,
             	default: '确定'
 			},
 			cancelText:{
@@ -46,7 +46,7 @@ import uiButton from '../base/button'
 			},
 			visible:{
 				type: Boolean,
-           		default: false
+                default: false
 			},
 			 callback: {
 			     default: null
@@ -55,12 +55,12 @@ import uiButton from '../base/button'
 		methods:{
 			ok(){
 				if(typeof this.callback === 'function'){
-					this.callback(true);
+					this.callback(true)
 				}
 			},
 			cancel(){
 				if(typeof this.callback === 'function'){
-					this.callback(false);
+					this.callback(false)
 				}
 			}
 		}

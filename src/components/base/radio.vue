@@ -10,14 +10,14 @@
 	<label class="ui-radio" :class="{
 		'ui-radio-checked': label === model,
 		'ui-radio-disabled': disabled
-	}">
+	     }">
 		<span class="inner"></span>
 		<input type="radio" :value="label" v-model="model" :disabled="disabled" >
 		<slot></slot>
 	</label>
 </template>
 <script>
-	export default {
+    export default {
 		name:"radio",
 		props:{
 			value: [String, Number],
@@ -37,14 +37,14 @@
 				}
 			}
 		},
-		 methods:{
-		   		changeFn(event){
-		   			if(this.disabled){
-		   				return false
-		   			}
-		   			this.$emit('onChange',event);
-		   		}
-		   }
+		methods:{
+	   		changeFn(event){
+	   			if(this.disabled){
+	   				return false
+	   			}
+	   			this.$emit('onChange',event);
+	   		}
+		}
 	}
 </script>
 <style lang="scss">
@@ -72,7 +72,7 @@
             &:after {
                 position: absolute;
                 @include px2rem(width, 8);
-               @include px2rem(height, 8);
+                @include px2rem(height, 8);
                 @include px2rem(left, 3);
                 @include px2rem(top, 3);
                 border-radius: 50%;
@@ -97,24 +97,24 @@
             cursor: pointer;
         }
     }
-    .ui-radio-checked {
-        .inner {
-              border-color: #3399ff;
-            &:after {
-                opacity: 1;
-                transform: scale(1);
-                transition: all .2s ease-in-out;
-            }
+.ui-radio-checked {
+    .inner {
+        border-color: #3399ff;
+        &:after {
+            opacity: 1;
+            transform: scale(1);
+            transition: all .2s ease-in-out;
         }
     }
-    .ui-radio-disabled{
-        cursor: not-allowed;
-        .inner{
-            border-color: #d7dde4;
-            background-color: #f3f3f3;
-            &:after{
-                background-color: #ccc;
-            }
+}
+.ui-radio-disabled{
+    cursor: not-allowed;
+    .inner{
+        border-color: #d7dde4;
+        background-color: #f3f3f3;
+        &:after{
+            background-color: #ccc;
         }
     }
+}
 </style>

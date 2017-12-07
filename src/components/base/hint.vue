@@ -60,7 +60,7 @@
 <style lang="scss">
 	@import "../../assets/sass/variable";
 	@import "../../assets/sass/mixin";
-	.hint {
+.hint {
     width: 100px;
     height: 100px;
     border-radius: 5px;

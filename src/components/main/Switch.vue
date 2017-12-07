@@ -17,17 +17,23 @@
 		  	</ui-switch>
 		  	<p>开关的值为：{{value1}}</p>
 		  </div>
+		   <codeBlock :code="codeSwitch"></codeBlock>
 	</div>
 </template>
 <script>
 import uiSwitch from "@/components/base/switch"
+import codeSwitch from '!raw-loader!../base/switch'
+import codeBlock from"@/components/common/CodeBlock"
+
 export default {
 	name:'main-switch',
 	components:{
-		uiSwitch
+		uiSwitch,
+		codeBlock
 	},
 	data(){
 		return {
+			codeSwitch,
 			value1:false,
 			value2:false,
 			switchStatus: false

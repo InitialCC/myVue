@@ -23,26 +23,26 @@
 </template>
 <script>
 	export default {
-		   name: 'checkbox',
-		   props:{
-		   		value:Array,
-		   		disabled:Boolean,
-		   		label:{
-		   			type:[String,Number,Boolean],
-		   			required: true
-		   		}
-		   },
-		   computed:{
-		   		model:{
-		   			get(){
-		   				return this.value;
-		   			},
-		   			set(newVal){
-		   				if(this.disabled){
-		   					return false
-		   				}
-		   				this.$emit("input",newVal);
-		   			}
+		name: 'checkbox',
+		props:{
+	   		value:Array,
+	   		disabled:Boolean,
+	   		label:{
+	   			type:[String,Number,Boolean],
+	   			required: true
+	   		}
+	    },
+	    computed:{
+			model:{
+				get(){
+					return this.value;
+				},
+				set(newVal){
+	   				if(this.disabled){
+	   					return false
+	   				}
+	   				this.$emit("input",newVal);
+	   			}
 		   	},
 		   	isChecked(){
 		   		for(let i = 0, len = this.value.length;i < len; i+=1){
@@ -50,18 +50,18 @@
 		   				return true
 		   			}
 		   		}
-		   		return false;
+		   		return false
 		   	}
-		   },
-		   methods:{
-		   		changeFn(event){
-		   			if(this.disabled){
-		   				return false
-		   			}
-		   			this.$emit('onChange',event);
-		   		}
-		   }
-	}
+	   },
+	   methods:{
+	   		changeFn(event){
+	   			if(this.disabled){
+	   				return false
+	   			}
+	   			this.$emit('onChange',event)
+	   		}
+	   }
+}
 </script>
 <style lang="scss">
 		.checkbox-input {

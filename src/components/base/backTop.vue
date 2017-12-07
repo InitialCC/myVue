@@ -8,9 +8,9 @@ export default {
         }
     },
  	watch: {
-            currentValue (value) {
-                this.visibility = (value === true ? 1 : 0)
-            }
+        currentValue (value) {
+            this.visibility = (value === true ? 1 : 0)
+        }
     },
     props:{
     	direction:{
@@ -37,9 +37,9 @@ export default {
             },this.$slots.default)
     },
     mounted(){
-    	 this.$nextTick(() => {
-                window.addEventListener('scroll',this.onScroll)
-         })
+    	this.$nextTick(() => {
+            window.addEventListener('scroll',this.onScroll)
+        })
     },
 	methods:{
 		goTop(){
@@ -50,21 +50,16 @@ export default {
 			}
 		},
   		onScroll () {
-                let scrollTop = window.scrollY
-                if (scrollTop > this.position) {
-                    this.currentValue = true
-                } else {
-                    this.currentValue = false
-                }
+            let scrollTop = window.scrollY
+            scrollTop > this.position?  this.currentValue = true : this.currentValue = false
         }
 	}
-
 }
 </script>
 <style lang="scss">
 @import "../../assets/sass/mixin";
 .scroll-top {
-  position: fixed;
+    position: fixed;
     bottom: 80px;
     right: 10px;
     @include px2px(width, 100px);

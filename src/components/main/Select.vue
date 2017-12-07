@@ -4,13 +4,11 @@
      <p>基本组件-选择器，一般用于数据选择。</p>
      <div class="box">
      	<h3>基础用法</h3>
-
      	<ui-select :items="list" v-model="value1" placeholder="请选择">
-     		
      	</ui-select>
      	<p>您选择了:{{value1}}</p>
      </div>
-       <codeBlock :code="codeSelect" :open="true"></codeBlock>
+     <codeBlock :code="codeSelect" :open="true"></codeBlock>
 </div>
 </template>
 <script>

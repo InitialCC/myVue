@@ -54,16 +54,13 @@
 
 </script>
 <style lang="scss">
-	
-	 /**
- * 按钮样式
- */
+
 @import "../../assets/sass/mixin";
 @import "../../assets/sass/variable";
 
 .btn {
     padding: 9px 15px;
-     @include px2px(font-size, $font-size-base);
+    @include px2px(font-size, $font-size-base);
     line-height: 1;
     color: $color-black;
     text-align: center;

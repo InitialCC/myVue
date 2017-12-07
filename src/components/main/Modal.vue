@@ -11,25 +11,31 @@
 		 <h2>hint 提示框</h2>
 		 <div class="box">
 		 	<p class="mark-p">功能组件，触发业务逻辑时使用,点击触发。</p>
-			 <ui-button @click.native="showHint">触发loding</ui-button>
+			  <ui-button @click.native="showHint">触发loding</ui-button>
 			  <ui-button @click.native="showHint2" type="primary">成功提示</ui-button>
 			  <ui-button @click.native="showHint3" type="warning">警告提示</ui-button>
 		 </div>
+		 <codeBlock :code="codeModal"></codeBlock>
 	</div>
 </template>
 <script>
 	import uiButton from "../base/button"
 	import uiModal from "../base/modal"
 	import uiHint from "../base/hint"
+
+	import codeModal from '!raw-loader!../base/modal'
+	import codeBlock from"@/components/common/CodeBlock"
 	export default {
 		name:'main-modal',
 		components:{
 			uiButton,
 			uiModal,
-			uiHint
+			uiHint,
+			codeBlock
 		},
 		data(){
 			return {
+				codeModal,
 				title:'',
 				content:'',
 				content2:'',

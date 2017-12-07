@@ -27,22 +27,22 @@
         computed:{
         	model:{
         		get(){
-        			return this.value;
+        			return this.value
         		},
         		set(newVal){
-        			this.$emit("input",newVal);
+        			this.$emit("input",newVal)
         		}
         	}
         },
         methods:{
         	plus(){
         		if(this.value >= this.maxNum ){
-        			return false;
+        			return false
         		}
-        		const _val = parseInt(this.value) + this.stepNum;
+        		const _val = parseInt(this.value) + this.stepNum
         		if(_val <= this.maxNum){
-					this.$emit('input',_val);
-	        		this.$emit('onPlus',_val);
+					this.$emit('input',_val)
+	        		this.$emit('onPlus',_val)
         		}
         	},
         	minus(){
@@ -51,15 +51,15 @@
         		}
         		const _val = parseInt(this.value) - this.stepNum;
         		if(_val >= 0) {
-        			this.$emit('input',_val);
-        			this.$emit('onMins',_val);
+        			this.$emit('input',_val)
+        			this.$emit('onMins',_val)
         		}
 	
         	}
         },
-    	 mounted() {
+    	mounted() {
             if (this.value <= this.minNum) {
-                this.$emit('input', this.minNum);
+                this.$emit('input', this.minNum)
             }
         }
     

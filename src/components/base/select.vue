@@ -10,51 +10,50 @@ slice(3, -3) 截取下标3到3的元素
  -->
 <template>
 	<div class="ui-select">
-		  <uiInput v-model="model" :placeholder="placeholder" :readonly="true" :disabled="disabled" @click.native="showBox"></uiInput>
-		  	<transition name="fade">
-		  		<div class="ui-select-shadow" v-show="show" @click="submit(false)" >
-		  		</div>
-		  	</transition>
-		     <transition name="expand-select">
-		     	<div class="ui-select-box"  v-show="show" @mousewheel="_stopDef">
-		     		<div class="ui-select-header">
-		     			 <div class="ui-select-cancel" @click="submit(false)">{{cancel}}</div>
-                    {{title}}
-                    	<div class="ui-select-confirm" @click="submit(true)">{{confirm}}</div>
-		     		</div>
-		     		 <div class="ui-select-content">
-		     		 	 <div class="ui-select-list">
-		     		 	 	<ul @touchstart="_onTouchStart('listState', $event)"
-		     		 	 		@mousedown="_onTouchStart('listState', $event)"
-								:style="{'transform' : 'translate3d(0,' + listState.translateY + 'px, 0)'}"
-								:class="{'dragging':listState.dragging}"
-		     		 	 		>
-		     		 	 		<li></li>
-	                            <li></li>
-	                            <li></li>
-	                            <li v-for="( item,index ) in listState.data"
-									:data-id="item.code"
-									:data-name="item.name"
-									:class="{'current':item.code === listState.selectedId,
-											'node1': Math.abs(index - listState.index) == 1,
-											'node2': Math.abs(index - listState.index) == 2,
-											'node3': Math.abs(index - listState.index) >= 3
-									}"
-		                            >{{ item.name }}</li>
-		     		 	 	</ul>
-		     		 	 </div>
-		     		 </div>
-		     		   <hr class="line-top">
-               		   <hr class="line-bottom">
-		     	</div>
-		     </transition>
+        <uiInput v-model="model" :placeholder="placeholder" :readonly="true" :disabled="disabled" @click.native="showBox"></uiInput>
+        <transition name="fade">
+            <div class="ui-select-shadow" v-show="show" @click="submit(false)" ></div>
+        </transition>
+        <transition name="expand-select">
+            <div class="ui-select-box"  v-show="show" @mousewheel="_stopDef">
+	     		<div class="ui-select-header">
+                    <div class="ui-select-cancel" @click="submit(false)">{{cancel}}</div>
+                        {{title}}
+                    <div class="ui-select-confirm" @click="submit(true)">{{confirm}}</div>
+	     		</div>
+	     		<div class="ui-select-content">
+	     		 	<div class="ui-select-list">
+                        <ul @touchstart="_onTouchStart('listState', $event)"
+                            @mousedown="_onTouchStart('listState', $event)"
+							:style="{'transform' : 'translate3d(0,' + listState.translateY + 'px, 0)'}"
+							:class="{'dragging':listState.dragging}"
+                            >
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li v-for="( item,index ) in listState.data"
+								:data-id="item.code"
+								:data-name="item.name"
+								:class="{'current':item.code === listState.selectedId,
+										'node1': Math.abs(index - listState.index) == 1,
+										'node2': Math.abs(index - listState.index) == 2,
+										'node3': Math.abs(index - listState.index) >= 3
+								}"
+	                            >{{ item.name }}</li>
+	     		 	 	</ul>
+	     		 	 </div>
+	     		</div>
+                <hr class="line-top">
+                <hr class="line-bottom">
+	     	</div>
+        </transition>
 	</div>
 </template>
 <script>
 
 import uiInput from "../base/input.vue";
 	export default{
-		name:'select',
+		name:'ui-select',
 		components:{
 			uiInput
 		},
@@ -81,7 +80,6 @@ import uiInput from "../base/input.vue";
             	 type: String,
                 default: '确定'
             }
-		
 		},
 		computed: {
             model: {
@@ -105,8 +103,8 @@ import uiInput from "../base/input.vue";
 					translateY:0,//滚动的距离
 					startTranslateY:0,
 					dragging: false,
-					 selectedId: null, //id值
-					 index:0 //索引值
+					selectedId: null, //id值
+					index:0 //索引值
 				},
 				inputValue:'',
 				delta:0,
@@ -142,9 +140,8 @@ import uiInput from "../base/input.vue";
         		//console.log(thisData.startTranslateY);
         		document.addEventListener('mousemove',this._onTouchMove,false)
         		document.addEventListener('mouseup',this._onTouchEnd,false) //松开鼠标
- 				document.removeEventListener('touchmove', this._onTouchMove,false)
+                document.removeEventListener('touchmove', this._onTouchMove,false)
                 document.removeEventListener('touchend', this._onTouchEnd,false)
-        	
         	},
         	_onTouchMove(e){
         		let target = this.target
@@ -154,7 +151,6 @@ import uiInput from "../base/input.vue";
  				if (Math.abs(this.delta) > 0) {
                     e.preventDefault()
                 }
-        		//
         	},
         	_onTouchEnd(e){
         		let target = this.target
@@ -188,35 +184,28 @@ import uiInput from "../base/input.vue";
         		this.inputValue = thisData.data[index].name
         	},
         	_getElem(e){
-        	
-				/*
-				@param e.currentTarget : ul目标节点
-				 */
-		
-        		return Array.from(e.currentTarget.children).slice(3,-3);
+				// e.currentTarget : ul目标节点
+        		return Array.from(e.currentTarget.children).slice(3,-3)
         		//返回新数组节点，去掉3个空的li标签。
         	},
         	_getTouchPos(e){
-        		/*
-        		@param e.changedTouches : 触发事件时改变的触摸点的集合
-        		 */
-        		//console.log(e)
+        		// e.changedTouches : 触发事件时改变的触摸点的集合
         		return e.changedTouches? e.changedTouches[0]['pageY'] : e['pageY']
         	},
         	showBox(){
-        		this.show = true;
+        		this.show = true
         	},
         	submit(val){
-        		this.show = false;
+        		this.show = false
         		if(val){
-        			this.result.id = this.items[this.listState.index].parentId;
-        			this.result.name  = this.items[this.listState.index].name;
-        			this.result.code  = this.items[this.listState.index].code;
-        			this.$emit('input',this.inputValue);
-        			console.log(this.inputValue);
-        			console.log(this.value);
+        			this.result.id = this.items[this.listState.index].parentId
+        			this.result.name  = this.items[this.listState.index].name
+        			this.result.code  = this.items[this.listState.index].code
+        			this.$emit('input',this.inputValue)
+        			/*console.log(this.inputValue)
+        			console.log(this.value)*/
         			if(this.value!==this.inputValue){
-        				  this.$emit('change', this.result)
+        				this.$emit('change', this.result)
         			}
         		}
         	},
@@ -228,7 +217,6 @@ import uiInput from "../base/input.vue";
         	this.init();
 
         }
-
 	}
 </script>
 <style lang="scss">
@@ -243,6 +231,7 @@ import uiInput from "../base/input.vue";
     left: 0;
     right: 0;
 }
+
 .ui-select-header{
     background-color: #eee;
     height: 44px;
@@ -250,6 +239,7 @@ import uiInput from "../base/input.vue";
     text-align: center;
     font-size: 16px!important;
 }
+
 .ui-select-box{
     position: fixed;
     z-index: 300;
@@ -258,6 +248,7 @@ import uiInput from "../base/input.vue";
     left: 0;
     right: 0;
 }
+
 .ui-select-cancel{
     float: left;padding: 0 20px;
     color: #1AAD19;
@@ -276,8 +267,9 @@ import uiInput from "../base/input.vue";
     overflow: hidden;height: 245px;
     overflow: hidden;
 }
+
 .ui-select-list  {
-	 width: 100%;
+	width: 100%;
     text-align: center;
     ul {
     	-webkit-transition: all .3s ease;
@@ -298,40 +290,42 @@ import uiInput from "../base/input.vue";
 		    &.current{
 		    		font-size: 16px!important;font-weight: bold;
 		    }
-		    	&.node1 {
-		    		font-size: 15px!important;opacity: .7;
-		    	}
-		    	&.node2{
-		    		font-size: 14px!important;opacity: .5;
-		    	}
-		    	&.node3 {
-		    		font-size: 12px!important;opacity: .3;
-		    	}
+	    	&.node1 {
+	    		font-size: 15px!important;opacity: .7;
+	    	}
+	    	&.node2{
+	    		font-size: 14px!important;opacity: .5;
+	    	}
+	    	&.node3 {
+	    		font-size: 12px!important;opacity: .3;
+	    	}
 	    }
     }
 }
 
 .line-top,.line-bottom {
-	    width: 100%;
+	width: 100%;
     border: none;
     border-top: 1px solid #eee;
     position: absolute;
-        margin: 0;
+    margin: 0;
     height: 0;
 }
+
 .line-top {
 	top: 149px;
 }
+
 .line-bottom {
 	top: 184px;
 }
 
 .ui-select {
-		input {
-			   cursor: pointer;
-		}
-	 
+	input {
+		   cursor: pointer;
+	}
 }
+
 .ui-select-shadow{
     width: 100%;
     height: 100%;
@@ -343,14 +337,24 @@ import uiInput from "../base/input.vue";
     left: 0;
     right: 0;
 }
+
 .ui-select-disabled {
     background-color: #f3f3f3;
     cursor: not-allowed;
     color: #ccc
 }
-.fade-enter-active, .fade-leave-active {transition: opacity .35s}
-.fade-enter, .fade-leave-active {opacity: 0}
-.expand-select-enter-active, .expand-select-leave-active {transition: all .4s ease;bottom: 0px;}
 
-.expand-select-enter, .expand-select-leave-active {transform: translate(0, 289px);}
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .35s
+}
+.fade-enter, .fade-leave-active {
+    opacity: 0
+}
+.expand-select-enter-active, .expand-select-leave-active {
+    transition: all .4s ease;
+    bottom: 0px;
+}
+.expand-select-enter, .expand-select-leave-active {
+    transform: translate(0, 289px);
+}
 </style>
