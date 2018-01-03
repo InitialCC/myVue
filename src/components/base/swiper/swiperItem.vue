@@ -13,13 +13,14 @@
 		},
 		data(){
 			return {
-
+				  offset: 0
 			}
 		},
 		computed:{
 			style(){
 				return {
-					width:this.$parent.width + 'px'
+					width:this.$parent.width + 'px',
+					transform: `translate3d(${this.offset}px, 0, 0)`
 				}
 			}
 		},

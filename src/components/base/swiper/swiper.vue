@@ -37,9 +37,6 @@
 			duration: {
 		      type: Number,
 		      default: 500
-    		},
-    		bg:{
-    			type:Array
     		}
 		},
 		data(){
@@ -83,7 +80,7 @@
 					paddingLeft:this.width + 'px',
 					width:(this.count + 2) * this.width + 'px',
 					transitionDuration:`${this.currentDuration}ms`,
-					transform: `translate3d(${this.offset}px,0,0)`
+					transform: `translate3d(${this.offset}px, 0, 0)`
 				}
 			},
 			activeIndicator(){
@@ -104,8 +101,8 @@
 			},
 			onTouchStart(event) {
 				clearTimeout(this.timer);
-				var eventX = event.clientX? event.clientX : event.touches[0].clientX;
-				var eventY = event.clientY ? event.clientY : event.touches[0].clientY;
+				const eventX = event.clientX? event.clientX : event.touches[0].clientX;
+				const eventY = event.clientY ? event.clientY : event.touches[0].clientY;
 				this.flag = true;
 				this.deltaX = 0;
 				this.direction = '';
@@ -123,7 +120,7 @@
 				}
 			},
 			onTouchMove(event){
-				var eventX = event.clientX? event.clientX : event.touches[0].clientX;
+				const eventX = event.clientX? event.clientX : event.touches[0].clientX;
 				if(this.flag) {
 					this.direction = this.direction || this.getDirection(event);
 					console.log(this.direction);
@@ -193,10 +190,6 @@
 						},30)
 					},autoplay);
 				}
-			},
-			changeIndex(index){
-				this.active = index;
-				//this.offset = this.count > 1 ? -this.width * (index) : 0
 			}
 		}
 	}
