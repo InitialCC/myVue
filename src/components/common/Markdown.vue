@@ -1,5 +1,7 @@
 <template>
-  <div class="markdown-body" v-html="marked(text)"></div>
+  <div class="markdown-body" v-html="marked(text)">
+
+  </div>
 </template>
 <script>
 	import marked from 'marked'
@@ -35,6 +37,6 @@
    @import "../../assets/github-markdown.css";
     @import "../../assets/atom-one-light.css";
     .markdown-body pre {
-    	background: #fff;
+       background-color: #f4f7fd;
     }
 </style>

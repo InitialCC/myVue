@@ -5,8 +5,7 @@
 		  <div class="box">
 		  		<h3 class="title">基础用法</h3>
 		  	 <p class="">基本使用，默认最小值为0，最大值不设限，可直接输入数字，当输入的是非数字是，会默认删除。</p>
-		  	 <div> <ui-control  v-model="value1" placeholder="请输入数字"></ui-control></div>
-		  	
+		  	 <div><ui-control v-model="value1" placeholder="请输入数字"></ui-control></div>
 		  	 <p>您输入了：{{value1}}</p>
 		  </div>
 		  <div class="box">

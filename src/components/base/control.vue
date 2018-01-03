@@ -6,63 +6,62 @@
 	</div>
 </template>
 <script>
-    export default {
-        name: 'control',
-        props:{
-			value:[String,Number],
-			stepNum:{
-				type:Number,
-				default:1
-			},
-			 minNum: {
-                type: Number,
-                default: 0
-            },
-			 maxNum: {
-                type: Number,
-                default: Infinity
-            },
-            placeholder:String
+export default {
+    name: 'ui-control',
+    props:{
+		value:[String,Number],
+		stepNum:{
+			type:Number,
+			default:1
 		},
-        computed:{
-        	model:{
-        		get(){
-        			return this.value
-        		},
-        		set(newVal){
-        			this.$emit("input",newVal)
-        		}
-        	}
+		 minNum: {
+            type: Number,
+            default: 0
         },
-        methods:{
-        	plus(){
-        		if(this.value >= this.maxNum ){
-        			return false
-        		}
-        		const _val = parseInt(this.value) + this.stepNum
-        		if(_val <= this.maxNum){
-					this.$emit('input',_val)
-	        		this.$emit('onPlus',_val)
-        		}
-        	},
-        	minus(){
-        		if(this.value <= this.minNum){
-        			return false;
-        		}
-        		const _val = parseInt(this.value) - this.stepNum;
-        		if(_val >= 0) {
-        			this.$emit('input',_val)
-        			this.$emit('onMins',_val)
-        		}
-	
-        	}
+		 maxNum: {
+            type: Number,
+            default: Infinity
         },
-    	mounted() {
-            if (this.value <= this.minNum) {
-                this.$emit('input', this.minNum)
-            }
+        placeholder:String
+	},
+    computed:{
+    	model:{
+    		get(){
+    			return this.value
+    		},
+    		set(newVal){
+    			this.$emit("input",newVal)
+    		}
+    	}
+    },
+    methods:{
+    	plus(){
+    		if(this.value >= this.maxNum ){
+    			return false
+    		}
+    		const _val = parseInt(this.value) + this.stepNum
+    		if(_val <= this.maxNum){
+				this.$emit('input',_val)
+        		this.$emit('onPlus',_val)
+    		}
+    	},
+    	minus(){
+    		if(this.value <= this.minNum){
+    			return false;
+    		}
+    		const _val = parseInt(this.value) - this.stepNum;
+    		if(_val >= 0) {
+    			this.$emit('input',_val)
+    			this.$emit('onMins',_val)
+    		}
+
+    	}
+    },
+	mounted() {
+        if (this.value <= this.minNum) {
+            this.$emit('input', this.minNum)
         }
-    
+    }
   }
 </script>
 <style lang="scss">

@@ -4,7 +4,7 @@
 		<p>主要用于一组可选项单项选择，或者单独用于切换到选中状态。</p>
 		<div class="box">
 			<h3 class="title">单独使用</h3>
-			<ui-checkbox  v-model="checkbox1"  :label="data1">
+		 	<ui-checkbox  v-model="checkbox1"  :label="data1">
 				<span>{{ data1 }}</span>
 			</ui-checkbox>
 			<p>已选择：{{checkbox1}}</p>
@@ -14,7 +14,7 @@
 			<ui-checkbox v-model="checkAll" :label="dataAll" @onChange="isCheckAll">全选</ui-checkbox>
 			<div>
 				<ui-checkbox  v-model="checkbox2" v-for="item in data2" :label="item" :key="item" @onChange="isCheck">
-				<span >{{ item }}</span>
+					<span >{{ item }}</span>
 				</ui-checkbox>
 			</div>
 			<p>已选择：{{checkbox2}}</p>
@@ -59,7 +59,6 @@ import { isArray } from "@/assets/js/util.js";
 			},
 			isCheck(){
 				const arr = this.dataAll.toString().split("");//String转为array
-				console.log(isArray(arr));
 				this.checkAll = this.checkbox2.length === this.data2.length ? arr :[]
 					
 				//alert(1);

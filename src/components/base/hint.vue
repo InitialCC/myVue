@@ -1,10 +1,12 @@
 <template>
+	<transition name="hitn-bounce">
 	<div class="hint" v-show="visible">
 		<ui-icon :name="iconName"></ui-icon>
 		<div class="text">
 			{{content}}
 		</div>
 	</div>
+	</transition>
 </template>
 <script>
  import uiIcon from './icon'
@@ -47,6 +49,7 @@
 		},
 		watch:{
 			visible(val){
+				console.log(val);
 				const _this = this;
 				if(val){
 					setTimeout(function(){
@@ -98,6 +101,15 @@
     .hint-text {
         padding: 5px 0;
     }
+    @include transition(.3s);
+}
+.hitn-bounce-enter {
+	opacity: 0;
+	@include transform(translate3d(-50%, -50%, 0) scale(0.7));
+}
+.hitn-bounce-leave-active  {
+opacity: 0;
+	@include transform(translate3d(-50%, -50%, 0) scale(0.9));
 }
 </style>
 

@@ -21,6 +21,7 @@
 		<slot></slot>
 	</label>
 </template>
+
 <script>
 	export default {
 		name: 'checkbox',
@@ -45,7 +46,7 @@
 	   			}
 		   	},
 		   	isChecked(){
-		   		for(let i = 0, len = this.value.length;i < len; i+=1){
+		   		for(let i = 0, len = this.value.length;i < len; i++){
 		   			if(this.value[i] === this.label ){
 		   				return true
 		   			}

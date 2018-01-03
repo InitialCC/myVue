@@ -83,10 +83,10 @@
 			if (this.readonly) {
 				return false
 			}
-			this.$emit('beforeRate', this.rate)
 			this.rate = index
-			this.$emit('input', this.rate)
-			this.$emit('afterRate', this.rate)
+			//this.$emit('beforeRate', this.rate)
+			//this.$emit('input', this.rate)
+			//this.$emit('afterRate', this.rate)
 		},
 		isEmpty(index) {
 			return index > this.over || !this.value && !this.over

@@ -1,29 +1,32 @@
 <template>
-	<div class="code-block">
+<div>
+	<div class="code-btn" @click="toggle()">
+			<i></i>
+			<span class="btnText">{{ btnText }}</span>
+	</div>
+	<transition name="fade">
+	<div class="code-block" v-show="codeOpen">
 		<div class="code-nav">
 			<ul>
 				<li v-for="(item,index) in items" :class="{'active': index === curIndex}" @click="changeIndex(index)">{{item}}</li>
 			</ul>
 		</div>
-	
-		<div class="code-content" v-show="codeOpen">
-			<transition name="fade">
+	<div class="code-content">
+			<transition name="bounce">
 				 <markdown :text="html" class="markdown-style" v-show="curIndex === 0">
 				</markdown>
 			</transition>
-			<transition name="fade">
+			<transition name="bounce">
 				<markdown :text="script" class="markdown-style" v-show="curIndex === 1">
 				</markdown>
 			</transition>
-			<transition name="fade">
+			<transition name="bounce">
 				<markdown :text="scss" class="markdown-style" v-show="curIndex === 2">
 				</markdown>
 			</transition>
-		</div>
-			<div class="code-btn" @click="toggle()">
-				<i></i>
-				<span class="btnText">{{ btnText }}</span>
-			</div>
+	</div>
+	</div>
+	</transition>
 	</div>
 </template>
 <script>
@@ -33,6 +36,7 @@
 @ []这个符号，表示在它里面包含的单个字符不限顺序的出现。
 例如:[\s\S]* 只要出现多类型空白，或非空白 都匹配
 */
+
 import markdown from './Markdown.vue'
 	export default {
 		name:'codeBlock',
@@ -53,20 +57,36 @@ import markdown from './Markdown.vue'
 			return {
 				items:['HTML','JS','SCSS'],
 				curIndex:0,
-				codeOpen:false
+				codeOpen:false,
+				slideHeight:0,
+				layerHeight:0
 			}
 		},
+
 		methods:{
 			changeIndex(index){
+				//this.slideHeight = this.layerHeight;
 				this.curIndex = index;
+
 			},
 			toggle(){
 				this.codeOpen = !this.codeOpen;
+				if(this.codeOpen) {
+
+				}
 			}
 		},
+		 watch:{
+		 	curIndex(index){
+		 	
+		 		console.log(index);
+		 	}
+		 },
 		mounted(){
+
 			if(this.open){
 				this.codeOpen = this.open;
+				//this.slideHeight = this.layerHeight;
 			}
 		},
 		components:{
@@ -80,7 +100,6 @@ import markdown from './Markdown.vue'
 				else {
 					return '隐藏代码'
 				}
-				
 			},
 			html(){
 				//console.log(this.code);
@@ -112,23 +131,33 @@ import markdown from './Markdown.vue'
 </script>
 <style lang="scss">
 @import "../../assets/sass/mixin.scss";
+.code-content {
+	position:relative;
+}
 	.code-btn {
 		border-top: 1px solid #eaeefb;
 	    height: 44px;
 	    line-height: 44px;
 	    box-sizing: border-box;
-	    background-color: #fff;
+	    background-color: #f4f7fd;
 	    border-bottom-left-radius: 4px;
 	    border-bottom-right-radius: 4px;
 	    text-align: center;
 	    margin-top: -1px;
-	    color: #d3dce6;
 	    cursor: pointer;
 	    position: relative;
 	    color: #409eff;
+	    transition: .1s;
+	    -moz-user-select: none;
+	    -webkit-user-select: none;
+	    -ms-user-select: none;
+	}
+	.isFixed{
+		position: fixed;
+    	bottom: 0;
+    	width: 1540px;
 	}
 	.btnText {
-		position: absolute;
 	    -ms-transform: translateX(-30px);
 	    transform: translateX(-30px);
 	    transition: .3s;
@@ -150,6 +179,27 @@ import markdown from './Markdown.vue'
 			}
 		}
 	}
-	.fade-enter-active, .fade-leave-active {transition: opacity .35s}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to  {
+  opacity: 0;
+}
+
+.bounce-enter-active {
+  animation: bounce-in .3s;
+}
+.bounce-leave-active {
+  animation: bounce-in .3s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 </style>

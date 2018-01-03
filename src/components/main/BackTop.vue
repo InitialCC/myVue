@@ -12,7 +12,7 @@
 			</ui-BackTop>
 		</div>
 		<codeBlock :code="codeGotop"></codeBlock>
-		<div class="space-box">占格子</div>
+	
 	</div>
 </template>
 
@@ -33,28 +33,9 @@
 		}
 	}
 </script>
-<style lang="scss">
-@import "../../assets/sass/mixin";
-	.scroll-top {
-  position: fixed;
-    bottom: 80px;
-    right: 10px;
-    @include px2px(width, 100px);
-    @include px2px(height, 100px);
-    border: 1px solid #d6d6d6;
-    border-radius: 50%;
-    background-color: #fff;
-    cursor: pointer;
-    text-align: center;
-    font-size: 14px;
-    .icon-arraw-up {
-        display: block;
-        @include px2px(margin-top, 8px);
-    }
-}
-.space-box {
-	padding-top:10px;
-	height: 1000px;
-}
+<style lang="scss" scope>
+
+ @import "../../assets/icons/icons";
+
 
 </style>

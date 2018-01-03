@@ -15,7 +15,7 @@
 		  		  <span slot="open">开</span>
                    <span slot="close">关</span>
 		  	</ui-switch>
-		  	<p>开关的值为：{{value1}}</p>
+		  	<p>开关的值为：{{value2}}</p>
 		  </div>
 		   <codeBlock :code="codeSwitch"></codeBlock>
 	</div>

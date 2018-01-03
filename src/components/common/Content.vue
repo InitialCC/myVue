@@ -19,13 +19,16 @@
  		}
  	}
  </script>
+
  <style lang="scss">
+ @import "../../assets/sass/mixin";
  	.main-content {
 		margin-left: 3rem;
  	}
  	.main-inner {
  		margin:40px 0px 0px 40px;
  		width: 90%;
+ 		position:relative;
 		.box {
 		 		margin-bottom: 20px;
 		 	}

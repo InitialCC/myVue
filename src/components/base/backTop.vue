@@ -58,6 +58,7 @@ export default {
 </script>
 <style lang="scss">
 @import "../../assets/sass/mixin";
+@import "../../assets/icons/icons";
 .scroll-top {
     position: fixed;
     bottom: 80px;
@@ -79,5 +80,5 @@ export default {
     padding-top:10px;
     height: 1000px;
 }
-</stlye>
+</style>
 	

@@ -1,7 +1,6 @@
 <template>
 	<div class="menu-fixed">
 		<div class="menu-title">
-			
 		</div>
 		 <ul class="useUl">
         	<menu-tree :items="homeData"></menu-tree>
@@ -9,7 +8,6 @@
          <ul class="useUl">
         	<menu-tree :items="baseData"></menu-tree>
         </ul>
-
 	</div>
 </template>
 <script>
@@ -23,11 +21,11 @@
 			return {
 				homeData:{
 					name:'开始',
-					router:'/home',
+					router:'/use',
 					children:[
 						{
-							name:"介绍",
-							router:'/home/intro'
+							name:"intro",
+							router:'/use/intro'
 						}
 					]
 				},
@@ -64,12 +62,16 @@
 							router:'/base/modal'
 						},
 						{
+							name:"hint",
+							router:'/base/hint'
+						},
+						{
 							name:"backTop",
 							router:'/base/backTop'
 						},
 						{
-							name:"slider",
-							router:'/base/slider'
+							name:"swiper",
+							router:'/base/swiper'
 						},
 						{
 							name:'picker',
@@ -78,6 +80,26 @@
 						{
 							name:'rate',
 							router:'/base/rate'
+						},
+						{
+							name:'button',
+							router:'/base/button'
+						},
+						{
+							name:'noticeBar',
+							router:'/base/noticeBar'
+						},
+						{
+							name:"pagination",
+							router:'/base/pagination'
+						},
+						{
+							name:'icon',
+							router:'/base/icon'
+						},
+						{
+							name:'progressBar',
+							router:'/base/progressBar'
 						}
 					]
 				}
@@ -87,13 +109,12 @@
 </script>
 <style lang="scss">
 	.menu-fixed {
-		    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3rem;
-
-    overflow: hidden;
-    z-index: 1;
-    box-shadow: 0px 0px 10px #333;
+		position: absolute;
+	    top: 45px;
+	    left: 0;
+	    width: 3rem;
+	    overflow: hidden;
+	    z-index: 1;
+	    box-shadow: 0px 0px 10px #333;
 	}
 </style>

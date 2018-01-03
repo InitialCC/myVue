@@ -26,6 +26,9 @@
             hollow:{
             	type:Boolean
             },
+            round:{
+                type:Boolean
+            },
             disabled:{
             	type:Boolean
             },
@@ -33,21 +36,30 @@
             	type:Boolean
             }
 		},
+        data(){
+            return {
+               
+            }
+        },
+        mounted(){
+           
+           
+        },
 		computed:{
 			className(){
 				let cn ='';
-				cn += this.size? ' btn--' + this.size : ''
-				cn += this.type? ' btn--' + this.type : ''
+				cn += this.size? ' btn-' + this.size : ''
+				cn += this.type? ' btn-' + this.type : ''
 				cn += this.hollow? ' z-hollow' : ''
 				cn += this.disabled ? ' z-disabled' : ''
 				cn += this.loading ? ' z-loading' : ''
+                cn += this.round ? ' z-round' : ''
 				return cn
 			},
 			iconName(){
 				let icon = '';
-				icon=this.icon?'icon-' + this.icon:''
+				icon = this.icon?'icon-' + this.icon:''
 				return icon
-
 			}
 		}
     }
@@ -112,7 +124,10 @@
     }
 }
 
-.btn--default {
+.btn-default {
+    &.z-round {
+        border-radius: 20px;
+    }
     &:hover {
         color: $color-primary;
         border-color: $color-primary;
@@ -125,7 +140,7 @@
 }
 
 // 文字按钮
-.btn--text {
+.btn-text {
     padding-left: 0;
     padding-right: 0;
     color: $color-info;
@@ -144,7 +159,7 @@
 }
 
 // 主要按钮
-.btn--primary {
+.btn-primary {
     color: $color-white;
     border-color: $color-primary;
     background-color: $color-primary;
@@ -162,16 +177,18 @@
         &:active,
         &:focus,
         &:hover {
-            order-color: lighten($color-primary, 10%);
-            color: lighten($color-primary, 10%);
+            color: $color-white;
+            border-color: $color-primary;
+            background-color:$color-primary;
         }
     }
+
 }
 
 
 /*各种颜色*/
 
-.btn--info {
+.btn-info {
     color: $color-white;
     border-color: $color-info;
     background-color: $color-info;
@@ -189,13 +206,15 @@
         &:active,
         &:focus,
         &:hover {
-            color: lighten($color-info, 10%);
-            border-color: lighten($color-info, 10%);
+            color: $color-white;
+            border-color: $color-info;
+            background-color:$color-info;
         }
     }
+
 }
 
-.btn--success {
+.btn-success {
     color: $color-white;
     border-color: $color-success;
     background-color: $color-success;
@@ -213,13 +232,15 @@
         &:active,
         &:focus,
         &:hover {
-            color: lighten($color-success, 10%);
-            border-color: lighten($color-success, 10%);
+            color: $color-white;
+          border-color: $color-success;
+        background-color: $color-success;
         }
     }
+
 }
 
-.btn--warning {
+.btn-warning {
     color: $color-white;
     border-color: $color-warning;
     background-color: $color-warning;
@@ -229,7 +250,7 @@
         border-color: lighten($color-warning, 6%);
         background-color: lighten($color-warning, 6%);
     }
-    // 镂空状态
+    // 空状态
     &.z-hollow {
         color: $color-warning;
         border-color: $color-warning;
@@ -237,13 +258,15 @@
         &:active,
         &:focus,
         &:hover {
-            color: lighten($color-warning, 10%);
-            border-color: lighten($color-warning, 10%);
+            color: $color-white;
+            background-color: $color-warning;
+            border-color: $color-warning;
         }
     }
+
 }
 
-.btn--danger {
+.btn-danger {
     color: $color-white;
     border-color: $color-danger;
     background-color: $color-danger;
@@ -261,17 +284,19 @@
         &:active,
         &:focus,
         &:hover {
-            color: lighten($color-danger, 10%);
-            border-color: lighten($color-danger, 10%);
+            color: $color-white;
+            background-color:$color-danger;
+            border-color: $color-danger;
         }
     }
+
 }
 
-.btn--primary,
-.btn--info,
-.btn--success,
-.btn--warning,
-.btn--danger {
+.btn-primary,
+.btn-info,
+.btn-success,
+.btn-warning,
+.btn-danger {
     // 按钮不可用
     &.z-disabled {
         color: $color-gray;
@@ -286,17 +311,24 @@
             background-color: $color-white;
         }
     }
+&.z-round {
+        border-radius: 20px;
+    }
 }
 
 
 /*不同大小*/
 
-.btn--large {
+.btn-large {
     padding: 12px 15px;
     @include px2px(font-size, $font-size-large);
 }
+.btn-normal {
+    padding: 9px 13px;
+    @include px2px(font-size, $font-size-base);
+}
 
-.btn--small {
+.btn-small {
     padding: 7px 10px;
     @include px2px(font-size, $font-size-smaller);
 }
@@ -304,7 +336,7 @@
 
 /*不同大小*/
 
-.btn-group {
+.btn-roup {
     &:before,
     &:after {
         content: " ";

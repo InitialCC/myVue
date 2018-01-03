@@ -1,5 +1,8 @@
 <template>
 	<div class="modal"  v-show="visible">
+        <transition name="fade">
+            <div class="shadow" v-show="visible" @click="submit(false)" ></div>
+        </transition>
 		<div class="inner">
 			<header class="modal-hd">{{title}}</header>
   			<section class="modal-bd" v-if="!modal_input">
@@ -14,6 +17,7 @@
         	</footer>
 		</div>
 	</div>
+
 </template>
 <script>
 import uiButton from '../base/button'
@@ -77,8 +81,6 @@ import uiButton from '../base/button'
     bottom: 0;
     right: 0;
     z-index: 9999;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
     .inner {
     border-radius: 5px;
     position: absolute;
@@ -88,7 +90,20 @@ import uiButton from '../base/button'
     border-radius: $radius-base;
     background-color: $color-white;
     transform: translate(-50%, -50%);
+    z-index: 100;
 	}
+    .shadow {
+     width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 200;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+        z-index: 1;
+    }
 }
 
 
@@ -145,6 +160,12 @@ import uiButton from '../base/button'
 .comright {
     float: right;
     width: 50%;
+}
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .35s
+}
+.fade-enter, .fade-leave-active {
+    opacity: 0
 }
 
 </style>
