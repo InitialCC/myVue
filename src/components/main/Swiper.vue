@@ -4,7 +4,7 @@
                  <h3>简单例子</h3>
         <div class="box">
                        <p>使用方式</p>
-            <ui-swiper :autoplay="2000">
+            <ui-swiper>
                 <ui-swiper-item>1</ui-swiper-item>
                 <ui-swiper-item>2</ui-swiper-item>
                 <ui-swiper-item>3</ui-swiper-item>

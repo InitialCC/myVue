@@ -100,6 +100,10 @@
 						{
 							name:'progressBar',
 							router:'/base/progressBar'
+						},
+						{
+							name:'navBar',
+							router:'/base/navBar'
 						}
 					]
 				}

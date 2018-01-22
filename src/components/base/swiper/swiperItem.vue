@@ -34,19 +34,12 @@
 </script>
 <style lang="scss">
 .ui-swiper-item {
-	/* color: #fff;
+    color: #fff;
     min-height: 140px;
     font-size: 20px;
     text-align: center;
     line-height: 150px;
     float: left;
-    height: 100%; */
-        color: #fff;
-    min-height: 140px;
-    font-size: 20px;
-    text-align: center;
-    line-height: 150px;
-        float: left;
     height: 100%;
     &:nth-child(2n) {
      background-color: #39a9ed

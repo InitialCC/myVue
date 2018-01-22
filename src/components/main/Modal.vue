@@ -40,7 +40,7 @@
 				this.modalType = 'alert'
 				this.title = 'alert-title'
 				this.content = 'alert文本内容'
-				this.ok= () =>{
+				this.ok = () => {
 					this.visible = false
 				}
 				/*let _self = this;

@@ -21,6 +21,7 @@ import mainNoticeBar from "@/components/main/noticeBar"
 import mainPagination from "@/components/main/Pagination"
 import mainIcon from "@/components/main/Icon"
 import mainProgressBar from "@/components/main/ProgressBar"
+import mainNavBar from "@/components/main/NavBar"
 //路由部分
 import base from '@/components/relative/Base.vue'
 import use from '@/components/relative/Use.vue'
@@ -93,6 +94,9 @@ export default new Router({
 		}, {
 			path: 'ProgressBar',
 			component: mainProgressBar
+		}, {
+			path: 'NavBar',
+			component: mainNavBar
 		}]
 	}]
 })
